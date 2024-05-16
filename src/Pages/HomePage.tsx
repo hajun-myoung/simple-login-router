@@ -26,6 +26,15 @@ export default function HomePage() {
     console.log(user);
   }, [user]);
 
+  const signout = useCallback(() => {
+    if (setUser) {
+      setUser({
+        id: -1,
+        name: null,
+      });
+    }
+  }, []);
+
   return (
     <Box
       className="centralize"
@@ -56,6 +65,13 @@ export default function HomePage() {
           Go to Main
         </Button>
       </Box>
+      <Button
+        onClick={() => {
+          signout();
+        }}
+      >
+        Sign Out
+      </Button>
     </Box>
   );
 }
